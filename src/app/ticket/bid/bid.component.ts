@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TicketService} from '../../shared/ticket.service';
 import {TicketModel} from '../../shared/ticket-model';
+import {UserService} from '../../shared/user.service';
 
 @Component({
   selector: 'app-bid',
@@ -9,15 +10,21 @@ import {TicketModel} from '../../shared/ticket-model';
 })
 export class BidComponent implements OnInit {
   ticket: TicketModel;
+  isLoggedIn: boolean;
 
-  constructor(private _ticketService: TicketService) {
+  constructor(private _ticketService: TicketService, _userService: UserService) {
+    this.isLoggedIn = _userService.isLoggedin;
   }
 
   ngOnInit() {
-    const id = '-L4RoTbCtVH0xR28JRvd';
+    const id = '-Ky0HolLJBH3Q5uVHWZf';
     this._ticketService.getOne(id).subscribe(
       ticket => this.ticket = ticket
     );
+  }
+
+  onBidWithBidStep() {
+    alert('gomb nyomkodvaa');
   }
 
 }

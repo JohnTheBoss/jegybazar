@@ -7,10 +7,16 @@ import {TicketModel} from '../../shared/ticket-model';
   styleUrls: ['./bidding-card.component.css']
 })
 export class BiddingCardComponent implements OnInit {
-   @Input() ticket: TicketModel;
-  constructor() { }
+  @Input() ticket: TicketModel;
+  @Input() isLoggedIn: boolean;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  onBidWithBidStep() {
+    alert('bidd van');
+  }
 }

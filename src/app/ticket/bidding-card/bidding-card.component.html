@@ -9,11 +9,11 @@
       </tr>
       <tr>
         <th scope="row">Jelenlegi licit:</th>
-        <td>3211 Ft TODOOO</td>
+        <td>{{ticket.currentBid}} Ft</td>
       </tr>
       <tr>
         <th scope="row">Licitek száma:</th>
-        <td>33 db TODOOO</td>
+        <td>{{ticket.bidCounter}} db</td>
       </tr>
       <tr>
         <th scope="row">Licit lépcső:</th>
@@ -21,7 +21,7 @@
       </tr>
 
       <tr>
-        <td colspan="2">Licit lejár <strong>X</strong> nap múlva</td>
+        <td colspan="2">Licit lejár <strong>{{ticket.bidEndDate | amFromUnix | amTimeAgo}}</strong> nap múlva</td>
       </tr>
 
       <!--<tr>-->
@@ -38,10 +38,7 @@
       </tbody>
     </table>
 
-    <div class="row">
-      <div class="col-12">
-        <a class="btn btn-primary text-light ml-lg-2">Licit a lépcső szerint</a>
-      </div>
-    </div>
+    <app-bid-form *ngIf="isLoggedIn" [ticket]="ticket" (bidWithBidStep)="onBidWithBidStep()"></app-bid-form>
+
   </div>
 </div>
