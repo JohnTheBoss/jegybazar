@@ -1,19 +1,19 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './about/about.component';
-import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
-import { EventDetailComponent } from './event/event-detail/event-detail.component';
-import { EventListComponent } from './event/event-list/event-list.component';
-import { EventComponent } from './event/event.component';
-import { HomeComponent } from './home/home.component';
-import { LoggedInGuardGuard } from './shared/logged-in-guard.guard';
-import { BidComponent } from './ticket/bid/bid.component';
-import { TicketDetailComponent } from './ticket/ticket-detail/ticket-detail.component';
-import { TicketListComponent } from './ticket/ticket-list/ticket-list.component';
-import { TicketComponent } from './ticket/ticket.component';
-import { LoginComponent } from './user/login/login.component';
-import { ProfileEditComponent } from './user/profile-edit/profile-edit.component';
-import { ProfileComponent } from './user/profile/profile.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {AboutComponent} from './about/about.component';
+import {PageNotFoundComponent} from './core/page-not-found/page-not-found.component';
+import {EventDetailComponent} from './event/event-detail/event-detail.component';
+import {EventListComponent} from './event/event-list/event-list.component';
+import {EventComponent} from './event/event.component';
+import {HomeComponent} from './home/home.component';
+import {LoggedInGuardGuard} from './shared/logged-in-guard.guard';
+import {BidComponent} from './ticket/bid/bid.component';
+import {TicketDetailComponent} from './ticket/ticket-detail/ticket-detail.component';
+import {TicketListComponent} from './ticket/ticket-list/ticket-list.component';
+import {TicketComponent} from './ticket/ticket.component';
+import {LoginComponent} from './user/login/login.component';
+import {ProfileEditComponent} from './user/profile-edit/profile-edit.component';
+import {ProfileComponent} from './user/profile/profile.component';
 
 
 const routes: Routes = [
@@ -33,7 +33,7 @@ const routes: Routes = [
     children: [
       {path: '', component: TicketListComponent},
       {path: 'new', component: TicketDetailComponent, canActivate: [LoggedInGuardGuard]},
-      {path: ':id', component: BidComponent, canActivate: [LoggedInGuardGuard]},
+      {path: ':id', component: BidComponent},
     ]
   },
   {path: 'about', component: AboutComponent},
