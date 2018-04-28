@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TicketModel} from '../../shared/ticket-model';
 
 @Component({
@@ -9,6 +9,7 @@ import {TicketModel} from '../../shared/ticket-model';
 export class BiddingCardComponent implements OnInit {
   @Input() ticket: TicketModel;
   @Input() isLoggedIn: boolean;
+  @Output() refreshTicket = new EventEmitter<void>();
 
   constructor() {
   }
@@ -17,6 +18,6 @@ export class BiddingCardComponent implements OnInit {
   }
 
   onBidWithBidStep() {
-    alert('bidd van');
+    this.refreshTicket.emit();
   }
 }

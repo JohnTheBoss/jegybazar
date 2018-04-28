@@ -1,9 +1,10 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 /* global css*/
-html{
+html {
   font-size: 12px;
 }
+
 body {
   min-height: 100vh;
   display: flex;
@@ -14,7 +15,7 @@ body {
   flex: 1;
 }
 
-.lead{
+.lead {
   font-size: 1.2em;
 }
 
@@ -29,30 +30,35 @@ footer {
 }
 
 /* index.html css*/
-.index_card{
-  border:none;
+.index_card {
+  border: none;
 }
-.index_text{
+
+.index_text {
   min-height: 8em;
 }
 
-.index_btn_card{
-  width:10em;
+.index_btn_card {
+  width: 10em;
 }
 
-.calendar{
+.calendar {
   height: 50px;
-  width:50px;
+  width: 50px;
 }
 
-.profil{
+.profil {
   height: 200px;
-  width:200px;
+  width: 200px;
 }
 
-
-@media (min-width:768px){
-  html{
-    font-size:16px;
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
   }
+}
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
 }

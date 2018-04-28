@@ -18,29 +18,33 @@ export class BidComponent implements OnInit {
   }
 
   ngOnInit() {
-    const handle404 = () => {
-      this._router.navigate(['404']);
-    };
     this._route.paramMap.subscribe(
       (params: ParamMap) => {
         const id = params.get('id') || '';
-        this._ticketService.getOne(id).subscribe(
-          ticket => {
-            if (ticket === null) {
-              handle404();
-            } else {
-              this.ticket = ticket;
-            }
-          }, () => {
-            return handle404();
-          }
-        );
+        this.refreshTicket(id);
       }
     );
   }
 
-  onBidWithBidStep() {
-    alert('gomb nyomkodvaa');
+  onRefreshTicket() {
+    this.refreshTicket(this.ticket.id);
   }
 
+  private refreshTicket(id) {
+    const handle404 = () => {
+      this._router.navigate(['404']);
+    };
+
+    this._ticketService.getOne(id).subscribe(
+      ticket => {
+        if (ticket === null) {
+          handle404();
+        } else {
+          this.ticket = ticket;
+        }
+      }, () => {
+        return handle404();
+      }
+    );
+  }
 }
