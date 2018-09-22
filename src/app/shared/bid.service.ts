@@ -17,7 +17,7 @@ export class BidService {
     return this._http.put(`${environment.firebase.baseUrl}/bids/${ticketId}/${userId}.json`, value)
       .flatMap(
         () => {
-          return this._ticketService.getOne(ticketId);
+          return this._ticketService.getOneOnce(ticketId);
         }
       )
       .flatMap(
