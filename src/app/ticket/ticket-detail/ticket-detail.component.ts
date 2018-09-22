@@ -1,12 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
-import { EventModel } from '../../shared/event-model';
-import { EventService } from '../../shared/event.service';
-import { TicketModel } from '../../shared/ticket-model';
-import { TicketService } from '../../shared/ticket.service';
-import { UserService } from '../../shared/user.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
+import {Subscription} from 'rxjs/Subscription';
+import {EventModel} from '../../shared/event-model';
+import {EventService} from '../../shared/event.service';
+import {TicketModel} from '../../shared/ticket-model';
+import {TicketService} from '../../shared/ticket.service';
+import {UserService} from '../../shared/user.service';
 
 @Component({
   selector: 'app-ticket-detail',
@@ -34,7 +34,9 @@ export class TicketDetailComponent implements OnInit, OnDestroy {
     // nem igazan szep, de tobbet most nem ert nekem a kerdes
     this.ticket.eventId = '';
 
-    this.ticket.sellerUserId = this._userService.getCurrentUser().id;
+    this._userService.getCurrentUser().subscribe(
+      user => this.ticket.sellerUserId = user.id
+    );
     this.events$ = this._eventService.getAllEvents();
   }
 

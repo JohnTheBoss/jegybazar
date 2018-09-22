@@ -10,7 +10,6 @@ import {FooterComponent} from './core/footer/footer.component';
 import {JumbotronComponent} from './core/jumbotron/jumbotron.component';
 import {NavbarComponent} from './core/navbar/navbar.component';
 import {EventcardComponent} from './event/eventcard/eventcard.component';
-import {AuthInterceptor} from './shared/auth-interceptor';
 import {EventService} from './shared/event.service';
 import {LoggedInGuardGuard} from './shared/logged-in-guard.guard';
 import {TicketService} from './shared/ticket.service';
@@ -54,11 +53,6 @@ import {environment} from '../environments/environment';
     TicketService,
     LoggedInGuardGuard,
     BidService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    }
   ],
   bootstrap: [AppComponent]
 })
