@@ -12,9 +12,10 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 export class BidComponent implements OnInit {
   ticket: TicketModel;
   isLoggedIn: boolean;
+  progressRefeshTicket = false;
 
   constructor(private _ticketService: TicketService, _userService: UserService, private _route: ActivatedRoute, private _router: Router) {
-    this.isLoggedIn = true; //_userService.isLoggedin;
+    this.isLoggedIn = true; // _userService.isLoggedin;
   }
 
   ngOnInit() {
@@ -31,12 +32,14 @@ export class BidComponent implements OnInit {
   }
 
   private refreshTicket(id) {
+    this.progressRefeshTicket = true;
     const handle404 = () => {
       this._router.navigate(['404']);
     };
 
     this._ticketService.getOne(id).subscribe(
       ticket => {
+        this.progressRefeshTicket = false;
         if (ticket === null) {
           handle404();
         } else {

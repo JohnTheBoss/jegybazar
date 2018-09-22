@@ -10,6 +10,7 @@ export class BiddingCardComponent implements OnInit {
   @Input() ticket: TicketModel;
   @Input() isLoggedIn: boolean;
   @Output() refreshTicket = new EventEmitter<void>();
+  @Input() loading = false;
 
   constructor() {
   }
