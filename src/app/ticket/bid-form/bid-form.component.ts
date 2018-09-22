@@ -28,7 +28,7 @@ export class BidFormComponent implements OnInit, OnChanges {
     if (changes['ticket'] !== null && !changes['ticket'].isFirstChange() && changes['ticket'].currentValue != null) {
       this.disabled = false;
       this.form.reset({bid: null});
-      this.form.get('bid').enable();
+      this.form.get('bid')!.enable();
 
     }
   }
@@ -69,7 +69,7 @@ export class BidFormComponent implements OnInit, OnChanges {
           // notification user
           this.submitSuccessAlert = true;
           this.bid.emit();
-          this.form.get('bid').enable();
+          this.form.get('bid')!.enable();
         },
         err => {
           console.error(err);
@@ -81,7 +81,7 @@ export class BidFormComponent implements OnInit, OnChanges {
   toBid(value: number) {
     this.submitSuccessAlert = false;
     this.submitErrorAlert = false;
-    this.form.get('bid').disable();
+    this.form.get('bid')!.disable();
     this.disabled = true;
 
     return this._bidService.bid(this.ticket.id, value);
