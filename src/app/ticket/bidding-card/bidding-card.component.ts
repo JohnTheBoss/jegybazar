@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {TicketModel} from '../../shared/ticket-model';
 
 @Component({
@@ -6,11 +6,19 @@ import {TicketModel} from '../../shared/ticket-model';
   templateUrl: './bidding-card.component.html',
   styleUrls: ['./bidding-card.component.css']
 })
-export class BiddingCardComponent implements OnInit {
+export class BiddingCardComponent implements OnInit, OnChanges {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['ticket'] != null
+      && !changes['ticket'].isFirstChange()
+      && changes['ticket'].currentValue != null) {
+      this.loading = false;
+    }
+  }
+
   @Input() ticket: TicketModel;
   @Input() isLoggedIn: boolean;
-  @Output() refreshTicket = new EventEmitter<void>();
-  @Input() loading = false;
+  loading = false;
+  @Output() bid = new EventEmitter<void>();
 
   constructor() {
   }
@@ -19,6 +27,7 @@ export class BiddingCardComponent implements OnInit {
   }
 
   onBidWithBidStep() {
-    this.refreshTicket.emit();
+    this.loading = true;
+    this.bid.emit();
   }
 }

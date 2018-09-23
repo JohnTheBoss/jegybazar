@@ -8,7 +8,7 @@
 
         <app-ticket-details-card [loading]="progressRefeshTicket" [ticket]="ticket"></app-ticket-details-card>
 
-        <app-bidding-card [loading]="progressRefeshTicket" [isLoggedIn]="isLoggedIn$ | async"
+        <app-bidding-card (bid)="onBid()" [isLoggedIn]="isLoggedIn$ | async"
                           [ticket]="ticket"></app-bidding-card>
       </div>
     </div>
