@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserModel } from '../../shared/user-model';
-import { UserService } from '../../shared/user.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {UserModel} from '../../shared/user-model';
+import {UserService} from '../../shared/user.service';
 
 @Component({
   selector: 'app-login',
